@@ -24,7 +24,7 @@ Content-Type: application/json; charset=utf-8
 Accept: application/json
 Accept-Charset: utf-8
 Signature: L+sBVB8FrP0lvR0MelzmsNivlw6dFYb5p0FU865mSPszIAyHyJ02Eg0GKCATOV25KYC2VpLgVD33tdgSQM56RifFukPnh8jJRCJRP36GHchszW1sIeBsd3ey/MTO7DW4QnYwLtDxhuIaDIifWwSkgT7I2IiqcxhUZPwECYLtzG51HU7Azwj/ECb5gew8wR2NlPKlbdzIO6938pF8veU3JMVlRkFs7dZfLxglcSk+sCcf0qnzCasocMHrO/p70szCN9X2vRt9y3Jur377Xncxb0vz2t5N8yR5KGDctw/J2yZHqhgJtLvKolnxa8wW2CjaqSb6y4mA95VM1JMl5Abjdw==
-SignatureCertChainUrl: https://s3.amazonaws.com/echo.api/echo-api-cert-5.pem
+SignatureCertChainUrl: https://s3.amazonaws.com/echo.api/echo-api-cert-6-ats.pem
 Content-Length: 1138
 Host: alexatest.xxx.com.cn
 Connection: Keep-Alive

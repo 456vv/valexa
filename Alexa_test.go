@@ -60,7 +60,7 @@ func Test_Alexa_3(testingT *testing.T){
 	var echoResp *EchoResponse
 	err := json.NewDecoder(w.Body).Decode(&echoResp)
 	if err != nil {
-		testingT.Fatal(err)
+		testingT.Fatalf("%v",err)
 	}
 	if echoResp.Response.Card.Title != "Hello World" {
 		testingT.Fatalf("错误的：%s", echoResp.Response.Card.Title)
