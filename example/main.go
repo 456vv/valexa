@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/456vv/valexa/v1"
+	"github.com/456vv/valexa"
 	"fmt"
 	"net/http"
 	"io"
