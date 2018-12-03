@@ -184,6 +184,7 @@ func (T *checkRequestBody) verifyBody(echoApp *EchoApplication) (body io.Reader,
 		return nil, fmt.Errorf("valexa: 证书无法验证 Body 数据， 错误的是（%s）", err)
 	}
 	
+	
 	return &bodyBuf, nil
 }
 
