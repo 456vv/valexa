@@ -28,7 +28,7 @@ SignatureCertChainUrl: https://s3.amazonaws.com/echo.api/echo-api-cert-5.pem
 Content-Length: 1138
 Host: alexatest.xxx.com.cn
 Connection: Keep-Alive
-User-Agent: Apache-HttpClient/UNAVAILABLE (Java/1.8.0_131)
+User-Agent: HttpClient
 
  {"session": 
 {"sessionId":"SessionId.b67984b5-01e4-4a2d-8cf1-c4692d304dde","application":{"applicationId":"amzn1.ask.skill.594232d8-4095-499b-9ba3-11701107834d"},"attributes":{},"user":{"userId":"amzn1.ask.account.AF3E6FFKSBVMJK6ZOGSEWKEDLD2EXJCZUFJX2ZNWO3R55COS5ZLILGRLM7WTJWKQYPRAOUZWFS2ZZP6ULJRALRA3CVIDCVZ7W5VUMZZMWREW3UWZRIF3XWJMXG5HV4LZZ5ZCDYXKM56BQUKOWVPYP4CWH3TP3SQABYCVATYLG56PNUHV2VON3RAY54LELDRHWBZ2JI6O6VN6LWY","accessToken":null},"new":false},
