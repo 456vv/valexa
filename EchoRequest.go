@@ -6,6 +6,212 @@ import (
 	
 )
 
+/*
+https://developer.amazon.com/zh/docs/custom-skills/request-and-response-json-reference.html
+
+POST / HTTP/1.1
+Content-Type : application/json;charset=UTF-8
+Host : your.application.endpoint
+Content-Length :
+Accept : application/json
+Accept-Charset : utf-8
+Signature: 
+SignatureCertChainUrl: https://s3.amazonaws.com/echo.api/echo-api-cert.pem
+Request Body Syntax
+
+{
+  "version": "1.0",
+  "session": {
+    "new": true,
+    "sessionId": "amzn1.echo-api.session.[unique-value-here]",
+    "application": {
+      "applicationId": "amzn1.ask.skill.[unique-value-here]"
+    },
+    "attributes": {
+      "key": "string value"
+    },
+    "user": {
+      "userId": "amzn1.ask.account.[unique-value-here]",
+      "accessToken": "Atza|AAAAAAAA...",
+      "permissions": {
+        "consentToken": "ZZZZZZZ..."
+      }
+    }
+  },
+  "context": {
+    "System": {
+      "device": {
+        "deviceId": "string",
+        "supportedInterfaces": {
+          "AudioPlayer": {}
+        }
+      },
+      "application": {
+        "applicationId": "amzn1.ask.skill.[unique-value-here]"
+      },
+      "user": {
+        "userId": "amzn1.ask.account.[unique-value-here]",
+        "accessToken": "Atza|AAAAAAAA...",
+        "permissions": {
+          "consentToken": "ZZZZZZZ..."
+        }
+      },
+      "apiEndpoint": "https://api.amazonalexa.com",
+      "apiAccessToken": "AxThk..."
+    },
+    "AudioPlayer": {
+      "playerActivity": "PLAYING",
+      "token": "audioplayer-token",
+      "offsetInMilliseconds": 0
+    }
+  },
+  "request": {
+	  "type": "IntentRequest",
+	  "requestId": "string",
+	  "timestamp": "string",
+	  "dialogState": "string",
+	  "locale": "string",
+	  "intent": {
+	    "name": "string",
+	    "confirmationStatus": "string",
+	    "slots": {
+	      "SlotName": {
+	        "name": "string",
+	        "value": "string",
+	        "confirmationStatus": "string",
+	        "resolutions": {
+	          "resolutionsPerAuthority": [
+	            {
+	              "authority": "string",
+	              "status": {
+	                "code": "string"
+	              },
+	              "values": [
+	                {
+	                  "value": {
+	                    "name": "string",
+	                    "id": "string"
+	                  }
+	                }
+	              ]
+	            }
+	          ]
+	        }
+	      }
+	    }
+	  }
+  }
+}
+
+//IntentRequest Example
+{
+  "version": "1.0",
+  "session": {
+    "new": false,
+    "sessionId": "amzn1.echo-api.session.0000000-0000-0000-0000-00000000000",
+    "application": {
+      "applicationId": "amzn1.echo-sdk-ams.app.000000-d0ed-0000-ad00-000000d00ebe"
+    },
+    "attributes": {
+      "supportedHoroscopePeriods": {
+        "daily": true,
+        "weekly": false,
+        "monthly": false
+      }
+    },
+    "user": {
+      "userId": "amzn1.account.AM3B00000000000000000000000"
+    }
+  },
+  "context": {
+    "System": {
+      "application": {
+        "applicationId": "amzn1.echo-sdk-ams.app.000000-d0ed-0000-ad00-000000d00ebe"
+      },
+      "user": {
+        "userId": "amzn1.account.AM3B00000000000000000000000"
+      },
+      "device": {
+        "supportedInterfaces": {
+          "AudioPlayer": {}
+        }
+      }
+    },
+    "AudioPlayer": {
+      "offsetInMilliseconds": 0,
+      "playerActivity": "IDLE"
+    }
+  },
+  "request": {
+    "type": "IntentRequest",
+    "requestId": " amzn1.echo-api.request.0000000-0000-0000-0000-00000000000",
+    "timestamp": "2015-05-13T12:34:56Z",
+    "dialogState": "COMPLETED",
+    "locale": "string",
+    "intent": {
+      "name": "GetZodiacHoroscopeIntent",
+      "confirmationStatus": "NONE"
+      "slots": {
+        "ZodiacSign": {
+          "name": "ZodiacSign",
+          "value": "virgo",
+          "confirmationStatus": "NONE"
+        }
+      }
+    }
+  }
+}
+
+SessionEndedRequest：
+{
+  "version": "1.0",
+  "session": {
+    "new": false,
+    "sessionId": "amzn1.echo-api.session.0000000-0000-0000-0000-00000000000",
+    "application": {
+      "applicationId": "amzn1.echo-sdk-ams.app.000000-d0ed-0000-ad00-000000d00ebe"
+    },
+    "attributes": {
+      "supportedHoroscopePeriods": {
+        "daily": true,
+        "weekly": false,
+        "monthly": false
+      }
+    },
+    "user": {
+      "userId": "amzn1.account.AM3B00000000000000000000000"
+    }
+  },
+  "context": {
+    "System": {
+      "application": {
+        "applicationId": "amzn1.echo-sdk-ams.app.000000-d0ed-0000-ad00-000000d00ebe"
+      },
+      "user": {
+        "userId": "amzn1.account.AM3B00000000000000000000000"
+      },
+      "device": {
+        "supportedInterfaces": {
+          "AudioPlayer": {}
+        }
+      }
+    },
+    "AudioPlayer": {
+      "offsetInMilliseconds": 0,
+      "playerActivity": "IDLE"
+    }
+  },
+  "request": {
+    "type": "SessionEndedRequest",
+    "requestId": "amzn1.echo-api.request.0000000-0000-0000-0000-00000000000",
+    "timestamp": "2015-05-13T12:34:56Z",
+    "reason": "USER_INITIATED",
+    "locale": "string"
+  }
+}
+*/
+
+
 
 
 //提供AudioPlayer接口当前状态的对象

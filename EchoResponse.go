@@ -4,6 +4,143 @@ import (
 	"encoding/json"
 )
 
+
+/*
+https://developer.amazon.com/zh/docs/custom-skills/request-and-response-json-reference.html
+
+HTTP/1.1 200 OK
+Content-Type: application/json;charset=UTF-8
+Content-Length:
+
+{
+  "version": "string",
+  "sessionAttributes": {
+    "key": "value"
+  },
+  "response": {
+    "outputSpeech": {
+      "type": "PlainText",
+      "text": "Plain text string to speak",
+      "ssml": "<speak>SSML text string to speak</speak>",
+      "playBehavior": "REPLACE_ENQUEUED"      
+    },
+    "card": {
+      "type": "Standard",
+      "title": "Title of the card",
+      "content": "Content of a simple card",
+      "text": "Text content for a standard card",
+      "image": {
+        "smallImageUrl": "https://url-to-small-card-image...",
+        "largeImageUrl": "https://url-to-large-card-image..."
+      }
+    },
+    "reprompt": {
+      "outputSpeech": {
+        "type": "PlainText",
+        "text": "Plain text string to speak",
+        "ssml": "<speak>SSML text string to speak</speak>",
+        "playBehavior": "REPLACE_ENQUEUED"             
+      }
+    },
+    "directives": [
+      {
+        "type": "InterfaceName.Directive"
+        (...properties depend on the directive type)
+      }
+    ],
+    "shouldEndSession": true
+  }
+}
+
+Response Examples：
+{
+  "version": "1.0",
+  "sessionAttributes": {
+    "supportedHoroscopePeriods": {
+      "daily": true,
+      "weekly": false,
+      "monthly": false
+    }
+  },
+  "response": {
+    "outputSpeech": {
+      "type": "PlainText",
+      "text": "Today will provide you a new learning opportunity.  Stick with it and the possibilities will be endless. Can I help you with anything else?"
+    },
+    "card": {
+      "type": "Simple",
+      "title": "Horoscope",
+      "content": "Today will provide you a new learning opportunity.  Stick with it and the possibilities will be endless."
+    },
+    "reprompt": {
+      "outputSpeech": {
+        "type": "PlainText",
+        "text": "Can I help you with anything else?"
+      }
+    },
+    "shouldEndSession": false
+  }
+}
+
+Response to IntentRequest or Launch Request with Directives Example:
+{
+  "version": "1.0",
+  "sessionAttributes": {},
+  "response": {
+    "outputSpeech": {
+      "type": "PlainText",
+      "text": "Playing the requested song."
+    },
+    "card": {
+      "type": "Simple",
+      "title": "Play Audio",
+      "content": "Playing the requested song."
+    },
+    "reprompt": {
+      "outputSpeech": {
+        "type": "PlainText",
+        "text": null
+      }
+    },
+    "directives": [
+      {
+        "type": "AudioPlayer.Play",
+        "playBehavior": "ENQUEUE",
+        "audioItem": {
+          "stream": {
+            "token": "this-is-the-audio-token",
+            "url": "https://my-audio-hosting-site.com/audio/sample-song.mp3",
+            "offsetInMilliseconds": 0
+          }
+        }
+      }
+    ],
+    "shouldEndSession": true
+  }
+}
+
+Response to AudioPlayer or PlaybackController Example (Directives Only):
+{
+  "version": "1.0",
+  "response": {
+    "directives": [
+      {
+        "type": "AudioPlayer.Play",
+        "playBehavior": "REPLACE_ALL",
+        "audioItem": {
+          "stream": {
+            "token": "track2-long-audio",
+            "url": "https://my-audio-hosting-site.com/audio/sample-song-2.mp3",
+            "offsetInMilliseconds": 0
+          }
+        }
+      }
+    ]
+  }
+}
+
+
+*/
 type EchoResponseResponseCardImage struct {
 	LargeImageURL string 												`json:"largeImageUrl,omitempty"`
 	SmallImageURL string 												`json:"smallImageUrl,omitempty"`

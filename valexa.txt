@@ -1,7 +1,6 @@
 
 type Alexa struct{                                                                              // Alexa服务
     AppIdAttr       string                                                                          // 程序的名称，如：appid
-    AppDevAttr      string                                                                          // 调试标识，如：dev
 }
     func (T *Alexa) SetEchoApp(alexaAppId string, app *EchoApplication)                             // 设置echoApp
     func (T *Alexa) ServeHTTP(w http.ResponseWriter, r *http.Request)                               // 服务器启用
@@ -42,7 +41,7 @@ type EchoIntent struct{                                                         
 func (T *EchoIntent) ServeHTTP(w http.ResponseWriter, r *http.Request)
 type EchoApplication struct {                                                                       // Echo程序的配置
     Version                 []string                                                                    // 支持的版本号
-    DevId                   string                                                                      // 调试ID，这是在go程序里的调试标识符，有关：Alexa.AttrDevId
+    IsDevelop               bool                                                                      	// 调试
     ValidReqTimestamp       int                                                                         // 有效时间，秒为单位
     CertFolder              string                                                                      // 证书保存目录
     HandleFunc              http.HandlerFunc                                                            // 原生处理函数

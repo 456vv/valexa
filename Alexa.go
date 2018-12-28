@@ -14,7 +14,6 @@ type Alexa struct{
 	//在Alexa后台，Configuration->Global Fields->Endpoint->Service Endpoint Type->选择HTTPS
 	//Default 填入 https://www.xxx.com/?appid=amzn1.ask.skill.594232d8-4095-499b-9ba3-11701107834s&type=1
 	AppIdAttr		string									//程序的名称，如：appid
-	AppDevAttr		string									//调试标识，如：dev
 	echoApps		*sync.Map								//map[ID名]*EchoApplication
 }
 
@@ -39,7 +38,6 @@ func (T *Alexa) ServeHTTP(w http.ResponseWriter, r *http.Request){
 	var(
 		query 	= r.URL.Query()
 		appId 	= query.Get(T.AppIdAttr)
-		appDev	= query.Get(T.AppDevAttr)
 	)
 	if appId == "" {
 		http.Error(w, fmt.Sprintf("valexa: 请求数据参数不完整，缺少程序ID名（AppIdAttr=%s）", appId), 400)
@@ -59,7 +57,7 @@ func (T *Alexa) ServeHTTP(w http.ResponseWriter, r *http.Request){
 
 	crb := &checkRequestBody{R:r}
 	//如果调试ID不相等，则验证Body
-	if echoApp.DevId != appDev || appDev == "" {
+	if !echoApp.IsDevelop {
 		//验证数据
 		_, err := crb.verifyBody(echoApp)
 		if err != nil {
